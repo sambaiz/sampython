@@ -17,9 +17,17 @@ def send(from_addr, to_addr, msg):
     s.sendmail(from_addr, [to_addr], msg.as_string())
     s.close()
 
+def address_read(filename):
+    f = open(filename)
+    data = f.read()
+    f.close()
+    lines = data.split('\\n')
+    return lines
+
 if __name__ == '__main__':
     from_addr = 'spam@example.com'
-    to_addr = 'sambaiz@sambla.net'
-    msg = create_message(from_addr, to_addr, 'good morning', 'おはよう！')
-    send(from_addr, to_addr, msg)
+    lines = address_read('maillist.txt')
+    for line in lines:
+        msg = create_message(from_addr, line, 'good morning', 'おはよう！')
+        send(from_addr, line, msg)
 
