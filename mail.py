@@ -8,7 +8,6 @@ def create_message(from_addr, to_addr, subject, body):
     msg['Subject'] = subject
     msg['From'] = from_addr
     msg['To'] = to_addr
-    msg['Date'] = formatdate()
     return msg
 
 def send(from_addr, to_addr, msg):
@@ -21,13 +20,14 @@ def address_read(filename):
     f = open(filename)
     data = f.read()
     f.close()
-    lines = data.split('\\n')
+    lines = data.split('\n')
     return lines
 
 if __name__ == '__main__':
     from_addr = 'spam@example.com'
     lines = address_read('maillist.txt')
     for line in lines:
+        print line
         msg = create_message(from_addr, line, 'good morning', 'おはよう！')
         send(from_addr, line, msg)
 
