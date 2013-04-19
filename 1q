@@ -26,10 +26,12 @@ def address_read(filename):
 
 if __name__ == '__main__':
     from_addr = 'spam@example.com'
-    twitter = Twitter()
     lines = address_read('maillist.txt')
     for line in lines:
-        if line == '': break
         print line
-        msg = create_message(from_addr, line, 'gomeifukuさんからのツイートがあります', twitter.random_select(100).encode('utf8'))
-        send(from_addr, line, msg)
+        msg = create_message(from_addr, line, 'good morning', 'おはよう！')
+        #send(from_addr, line, msg)
+        twitter = Twitter()
+        print twitter.random_select
+
+
