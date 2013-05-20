@@ -31,5 +31,5 @@ if __name__ == '__main__':
     for line in lines:
         if line == '': break
         print line
-        msg = create_message(from_addr, line, 'gomeifukuさんからのツイートがあります', twitter.random_select(100).encode('utf8'))
+        msg = create_message(from_addr, line, 'ツイートがあります', twitter.random_select(100).encode('utf8'))
         send(from_addr, line, msg)
